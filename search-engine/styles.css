@@ -1,0 +1,308 @@
+/* Reset & base */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  font-size: 16px;
+}
+
+body {
+  min-height: 100%;
+  min-height: 100dvh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  background: #ffffff;
+  color: #1a1a1a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-x: hidden;
+}
+
+/* Page container – fills viewport and centers content */
+.page {
+  position: relative;
+  width: 100%;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: clamp(1rem, 4vw, 2.5rem);
+}
+
+/* Weather – top right */
+.weather {
+  position: absolute;
+  top: clamp(1rem, 3vw, 1.75rem);
+  right: clamp(1rem, 3vw, 2rem);
+  text-align: right;
+  line-height: 1.25;
+}
+
+.weather .temp {
+  font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+  font-weight: 500;
+  color: #1a1a1a;
+}
+
+.weather .city {
+  font-size: clamp(0.85rem, 1.8vw, 1rem);
+  color: #5b6bff;
+  font-weight: 500;
+}
+
+/* Main content – centered */
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 42rem;
+  gap: clamp(0.75rem, 2vw, 1.25rem);
+}
+
+/* Clock */
+.clock {
+  font-size: clamp(2.75rem, 8vw, 4.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  color: #111;
+  font-variant-numeric: tabular-nums;
+  line-height: 1.1;
+}
+
+/* Greeting */
+.greeting {
+  font-size: clamp(1.1rem, 2.8vw, 1.5rem);
+  font-weight: 500;
+  color: #5b6bff;
+  margin-bottom: clamp(0.5rem, 1.5vw, 1rem);
+}
+
+/* Search wrapper */
+.search-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 28rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background: #f5f5f7;
+  border-radius: 9999px;
+  padding: 0.7rem 3.6rem 0.7rem 1.1rem; /* extra right space for the S/T toggle */
+  gap: 0.65rem;
+  transition: box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.search-bar:focus-within {
+  background: #f0f0f2;
+  box-shadow: 0 0 0 2px rgba(91, 107, 255, 0.25);
+}
+
+.search-icon {
+  color: #9ca3af;
+  font-size: 0.95rem;
+  flex-shrink: 0;
+}
+
+.search-bar input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: clamp(0.95rem, 2vw, 1.05rem);
+  color: #1a1a1a;
+  min-width: 0;
+}
+
+.search-bar input::placeholder {
+  color: #9ca3af;
+}
+
+/* Toggle S / T */
+.toggle {
+  position: absolute;
+  right: 0.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  background: #1a1a1a;
+  border-radius: 9999px;
+  padding: 0.18rem;
+  gap: 0.12rem;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  z-index: 2;
+}
+
+.toggle span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.55rem;
+  height: 1.55rem;
+  border-radius: 50%;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #fff;
+  transition: transform 0.15s ease;
+}
+
+.toggle-s {
+  background: #f97316; /* orange */
+}
+
+.toggle-t {
+  background: #3b82f6; /* blue */
+}
+
+.toggle:hover span {
+  transform: scale(1.08);
+}
+
+/* Icons row */
+.icons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(0.6rem, 1.8vw, 0.9rem);
+  margin-top: clamp(0.75rem, 2vw, 1.25rem);
+  width: 100%;
+}
+
+.icon-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(2.6rem, 7vw, 3.1rem);
+  height: clamp(2.6rem, 7vw, 3.1rem);
+  border-radius: 1rem;
+  background: #f5f5f7;
+  color: #333;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.2s ease;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.icon-btn:hover {
+  background: #e8e8ec;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.icon-btn:active {
+  transform: translateY(0);
+}
+
+/* Specific icon colors */
+.icon-btn .fa-youtube {
+  color: #ff0000;
+}
+
+.icon-btn .fa-comment-dots {
+  color: #10a37f; /* ChatGPT-ish */
+}
+
+.icon-btn .dg-text {
+  font-size: 0.85em;
+  font-weight: 700;
+  color: #22c55e;
+  letter-spacing: -0.02em;
+}
+
+.icon-btn .fa-fish {
+  color: #0ea5e9;
+}
+
+.icon-btn .fa-github {
+  color: #24292f;
+}
+
+.icon-btn .fa-linkedin-in {
+  color: #0a66c2;
+}
+
+.add-btn {
+  color: #6b7280;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .search-wrapper {
+    max-width: 100%;
+  }
+
+  .toggle {
+    right: 0.1rem;
+  }
+
+  .icons {
+    gap: 0.5rem;
+  }
+
+  .icon-btn {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 0.85rem;
+  }
+}
+
+@media (max-width: 360px) {
+  .weather {
+    top: 0.75rem;
+    right: 0.75rem;
+  }
+
+  .clock {
+    font-size: 2.4rem;
+  }
+
+  .greeting {
+    font-size: 1rem;
+  }
+}
+
+/* Very tall / short screens */
+@media (max-height: 500px) {
+  .page {
+    padding-top: 3.5rem;
+    padding-bottom: 1rem;
+  }
+
+  .main {
+    gap: 0.5rem;
+  }
+
+  .clock {
+    font-size: clamp(2rem, 6vw, 3rem);
+  }
+
+  .icons {
+    margin-top: 0.5rem;
+  }
+}
+
+/* Prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .icon-btn,
+  .toggle span,
+  .search-bar {
+    transition: none;
+  }
+}
